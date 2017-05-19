@@ -6,8 +6,11 @@ require('dotenv').config({path: '../.env'})
 let controllers = {}
 
 //get user
-controllers.getAll = (req,res)=>{
-
+controllers.checkToken = (req,res)=>{
+  console.log(req.headers.token);
+  let decode = jwt.verify(req.headers.token, process.env.SECRET);
+  console.log(decode);
+  res.send(decode)
 }
 
 //sign up
